@@ -61,3 +61,37 @@ In the future, we will implement the 3-D version of Super U-Net and validate its
 ## Exploring Potential of Super U-Net for Other Medical Image Analysis Tasks
 
 We will explore the potential of Super U-Net for other medical image analysis tasks (e.g., classification and registration).
+
+## New Techniques and Methods Implemented
+
+To improve the accuracy of SuperUNET for segmentation tasks, the following techniques have been implemented:
+
+* **Attention mechanisms**: Integrate SE (Squeeze-and-Excitation), CBAM (Convolutional Block Attention Module), or Transformer Blocks to allow the model to focus on the most relevant regions.
+* **Residual connections**: Use ResUNet-like skip connections to prevent vanishing gradients and enhance feature propagation.
+* **Deformable convolutions**: Replace standard convolutions with deformable convolutions to capture complex patterns.
+* **Elastic deformations, affine transformations, and CutMix**: These help the model generalize better.
+* **MixUp augmentation**: Blends two images and labels for better robustness.
+* **Focal loss + Dice loss**: Focal loss improves segmentation on hard-to-classify pixels, while Dice loss balances foreground and background segmentation.
+* **Boundary loss**: Helps in better contour segmentation, especially for medical images.
+* **Pretraining with large datasets**: Use pretrained encoders like EfficientNet, Swin Transformer, or ConvNeXt for better feature extraction.
+* **Progressive learning**: Train with lower resolution first, then gradually increase image size to stabilize learning.
+* **Adaptive learning rate scheduling**: Use Cosine Annealing or Cyclical LR for smoother convergence.
+* **CRF (Conditional Random Fields)**: Helps refine segmentation boundaries.
+* **Test-time augmentation (TTA)**: Apply multiple transformations during inference and average predictions.
+* **Ensemble learning**: Combine multiple models for robust segmentation.
+
+## Instructions for Using the New Features and Techniques
+
+1. **Attention Mechanisms**: The attention mechanisms such as SE, CBAM, or Transformer Blocks have been integrated into the model architecture. You can enable these mechanisms by modifying the model definition in the `super_unet.ipynb` notebook.
+
+2. **MixUp Augmentation**: MixUp augmentation has been implemented in the data augmentation section of the `super_unet.ipynb` notebook. You can apply MixUp augmentation by calling the `mixup_data` function on your training data.
+
+3. **Focal Loss and Boundary Loss**: The Focal Loss and Boundary Loss functions have been added to the `super_unet.ipynb` notebook. You can use these loss functions in model compilation by specifying them in the `model.compile` method.
+
+4. **Pretraining with Large Datasets**: Pretrained encoders like EfficientNet, Swin Transformer, or ConvNeXt can be used for better feature extraction. You can load these pretrained encoders in the `super_unet.ipynb` notebook and use them in the model architecture.
+
+5. **Progressive Learning and Adaptive Learning Rate Scheduling**: Progressive learning and adaptive learning rate scheduling have been added to the training section of the `super_unet.ipynb` notebook. You can implement these techniques by following the provided code in the notebook.
+
+6. **CRF, TTA, and Ensemble Learning**: CRF, TTA, and ensemble learning have been implemented in the post-processing section of the `super_unet.ipynb` notebook. You can apply these techniques by calling the respective functions on your model predictions.
+
+By following these instructions, you can utilize the new features and techniques to improve the accuracy and robustness of the SuperUNET model for segmentation tasks.
